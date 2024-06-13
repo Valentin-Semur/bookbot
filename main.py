@@ -9,6 +9,7 @@ def get_book_text(book_path):
         return file.read()
 
 def count_words(text):
-    return len(text.split())
+    words = text.split()
+    return len(words)
 
 main()
