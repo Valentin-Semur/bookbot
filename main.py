@@ -1,6 +1,10 @@
 def main():
-    with open("books/frankestein.txt", 'r') as file:
-        text = file.read()
+    book_path = "books/frankenstein.txt"
+    text = get_book_text(book_path)
     print(text)
 
+def get_book_text(book_path):
+    with open(book_path, 'r') as file:
+        return file.read()
+    
 main()
