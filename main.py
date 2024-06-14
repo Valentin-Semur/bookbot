@@ -3,10 +3,13 @@ def main():
     text = get_book_text(book_path)
     number_of_words = count_words(text)
     letter_count, number_count = count_characters(text)
+    sorted_letters = sort_letters(letter_count)
 
-    print(f"The are {number_of_words} words in the book {book_path}")
-    print(f"The letter count is: {letter_count}")
-    print(f"The number count is: {number_count}")
+    print(f"--- Begin report of {book_path} ---")
+    print(f"{number_of_words} words found in the document")
+    for letter, count in sorted_letters:
+        print(f"The '{letter}' character was found {count} times")
+    print("--- End report ---")
 
 def get_book_text(book_path):
     with open(book_path, 'r') as file:
@@ -14,6 +17,7 @@ def get_book_text(book_path):
 
 def count_words(text):
     words = text.split()
+
     return len(words)
 
 def count_characters(text):
@@ -28,5 +32,10 @@ def count_characters(text):
     
     return letters, numbers
 
+
+def sort_letters(letters):
+    sorted_letters = sorted(letters.items(), key=lambda x: x[1], reverse=True)
+
+    return sorted_letters
 
 main()
